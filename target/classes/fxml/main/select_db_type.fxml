@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="dialog" prefWidth="200.0" style="-fx-background-color: rgb(32,37,44);" styleClass="app-window" stylesheets="@../../css/app.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.jasonsui.views.main.SelectDbTypeView">
+   <children>
+      <AnchorPane layoutX="1.0" layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox fx:id="windowTitle" alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="150.0">
+               <children>
+                  <Text fill="GREY" strokeType="OUTSIDE" strokeWidth="0.0" text="请选择数据库类型">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+            <MaterialDesignIconView fx:id="closeBtn" glyphName="CHECKBOX_BLANK_CIRCLE" layoutX="177.0" layoutY="21.75" size="18" styleClass="close" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+         </children>
+      </AnchorPane>
+      <VBox prefHeight="150.0" prefWidth="100.0" style="-fx-background-color: rgb(39,44,53);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <JFXButton fx:id="mysqlBtn" alignment="BASELINE_LEFT" graphicTextGap="5.0" prefWidth="200.0" styleClass="select-db-type-btn" text="MySql">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/db/mysql.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="pgBtn" alignment="BASELINE_LEFT" graphicTextGap="5.0" prefWidth="200.0" styleClass="select-db-type-btn" text="PostgreSQL">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/db/pg.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="oracleBtn" alignment="BASELINE_LEFT" graphicTextGap="5.0" prefWidth="200.0" styleClass="select-db-type-btn" text="Oracle">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/db/oracle.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

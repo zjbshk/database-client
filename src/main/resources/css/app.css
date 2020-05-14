@@ -1,0 +1,46 @@
+.root {
+    -fx-base: rgb(48,48,48);
+    -fx-background: derive(-fx-base,26.4%);
+    -fx-control-inner-background: derive(-fx-base,80%);
+    -fx-control-inner-background-alt: derive(-fx-control-inner-background,-2%);
+}
+
+.close{
+    -fx-fill: #4b4b4c;
+}
+
+.close:hover{
+    -fx-fill: rgb(254,90,83);
+}
+
+.new-connection-btn{
+    -fx-text-fill: #fff;
+    -fx-border-radius: 0px;
+    -fx-background-radius:0px;
+}
+
+.new-connection-btn .glyph-icon{
+    -fx-fill: #fff;
+}
+
+.app-window{
+    -fx-background-color:  rgb(44,50,60);
+    -fx-border-width: 1px;
+    -fx-border-color: rgb(106,106,106);
+}
+
+.select-db-type-btn{
+    -fx-text-fill:  rgb(214,212,228);
+    -fx-border-radius: 0px;
+    -fx-border-width: 0px;
+    -fx-background-radius: 0 0 0 0;
+}
+
+.select-db-type-btn:hover{
+    -fx-background-color:  rgb(27,100,209);
+    -fx-text-fill: rgb(225,225,225);
+    -fx-background-radius: 0 0 0 0;
+}
+
+
+

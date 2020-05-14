@@ -1,0 +1,8 @@
+javafx:
+    stage:
+      style: TRANSPARENT
+app:
+  recommend:
+    gitee-url: https://gitee.com
+    github-url: https://github.com
+    jianshu-url: https://www.jianshu.com/c/03642b02d591
