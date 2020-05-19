@@ -36,10 +36,37 @@
     -fx-background-radius: 0 0 0 0;
 }
 
-.select-db-type-btn:hover{
+
+.select-db-type-btn:focused{
     -fx-background-color:  rgb(27,100,209);
     -fx-text-fill: rgb(225,225,225);
     -fx-background-radius: 0 0 0 0;
+}
+
+.db_conf_text_field{
+    -fx-background-radius: 0px;
+    -fx-background-color: rgb(50,57,68);
+    -fx-text-fill:  rgb(220,223,228);
+    -fx-border-color: rgb(50,57,68);
+    -fx-border-width: 2px ;
+}
+
+.db_conf_text_field:focused{
+    -fx-border-color: rgb(27,100,209);
+    -fx-border-width: 2px ;
+}
+
+
+.db_conf_label{
+    -fx-text-fill: rgb(220,223,228);
+}
+
+.confirm-dialog {
+    -fx-background-color: rgb(45, 50, 59);
+}
+
+.confirm-dialog-text-fill {
+    -fx-text-fill: rgb(220, 223, 228);
 }
 
 

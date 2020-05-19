@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="430.0" prefWidth="600.0" style="-fx-background-color: rgb(45,50,59);;" stylesheets="@../../css/app.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.jasonsui.views.main.MysqlConfigView">
+   <children>
+      <AnchorPane prefHeight="357.0" prefWidth="502.0" style="-fx-background-color: rgb(45,50,59);;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <GridPane alignment="CENTER" hgap="20.0" layoutY="-14.0" prefHeight="0.0" prefWidth="0.0" vgap="15.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="50.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="391.0" minWidth="10.0" prefWidth="348.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints fillHeight="false" maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" />
+                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" />
+                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" />
+                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" />
+                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" styleClass="db_conf_label" text="Name:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" styleClass="db_conf_label" text="Host:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" styleClass="db_conf_label" text="Port:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" styleClass="db_conf_label" text="Password:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" styleClass="db_conf_label" text="User:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" styleClass="db_conf_label" text="Database:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nameTextF" promptText="请输入名称" styleClass="db_conf_text_field" GridPane.columnIndex="1" />
+                  <TextField fx:id="hostTextF" promptText="请输入ip" styleClass="db_conf_text_field" text="localhost" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="portTextF" promptText="请输入端口号" styleClass="db_conf_text_field" text="3306" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="userTextF" promptText="请输入用户名称" styleClass="db_conf_text_field" text="root" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <PasswordField fx:id="passwordTextF" promptText="请输入密码" styleClass="db_conf_text_field" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="databaseTextF" promptText="请输入数据库" styleClass="db_conf_text_field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" styleClass="db_conf_label" text="URL:" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="urlTextF" promptText="请输入URL" styleClass="db_conf_text_field" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+      <JFXButton fx:id="testBtn" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutX="342.0" layoutY="344.0" lineSpacing="10.0" prefWidth="100.0" style="-fx-background-color: rgb(70,75,85);" text="测试连接" textFill="WHITE" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="180.0">
+         <graphic>
+            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/db/test.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="confirmBtn" alignment="BOTTOM_LEFT" buttonType="RAISED" graphicTextGap="5.0" layoutX="462.0" layoutY="344.0" prefWidth="90.0" style="-fx-background-color: rgb(70,75,85);" text="OK" textFill="WHITE" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="48.0">
+         <graphic>
+            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/db/ok.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

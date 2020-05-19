@@ -1,8 +1,5 @@
-package org.jasonsui.views.main;
+package org.jasonsui.views.plugins;
 
-import com.jfoenix.controls.JFXButton;
-import de.felixroske.jfxsupport.AbstractFxmlView;
-import de.felixroske.jfxsupport.FXMLView;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import io.reactivex.rxjavafx.observables.JavaFxObservable;
@@ -13,59 +10,48 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Window;
 import javafx.util.Duration;
-import lombok.extern.slf4j.Slf4j;
-import org.jasonsui.commons.AppEnum;
-import org.jasonsui.commons.util.EventBus;
 
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-import static org.jasonsui.commons.FxmlConstants.SELECT_DB_TYPE;
-
-@Slf4j
-@FXMLView(value = SELECT_DB_TYPE)
-public class SelectDbTypeView extends AbstractFxmlView implements Initializable {
-
+public class WindowPlugin implements Initializable {
+    public AnchorPane dialog;
+    @FXML
+    private AnchorPane windowTitle;
 
     @FXML
-    private AnchorPane dialog;
+    private ImageView icon;
 
     @FXML
-    private HBox windowTitle;
+    private Text title;
 
     @FXML
     private MaterialDesignIconView closeBtn;
 
     @FXML
-    private JFXButton mysqlBtn;
-
-    @FXML
-    private JFXButton pgBtn;
-
-    @FXML
-    private JFXButton oracleBtn;
+    private AnchorPane content;
 
     private static double xOffset = 0;
 
     private static double yOffset = 0;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        initCloseBtn();
         initEscapeHandler();
         windowDragged();
-        initCloseBtn();
-        initSelectClick();
-        initKeyEnterHandler();
         initDropShadow();
     }
 
@@ -108,34 +94,10 @@ public class SelectDbTypeView extends AbstractFxmlView implements Initializable 
         timeline.play();
     }
 
-    private void initKeyEnterHandler() {
-        JavaFxObservable.eventsOf(dialog, KeyEvent.KEY_PRESSED)
-                .filter(keyEvent -> keyEvent.getCode() == KeyCode.ENTER)
-                .subscribe(keyEvent -> {
-                    if (mysqlBtn.isFocused()) {
-                        setValue(AppEnum.TypeEnum.MYSQL);
-                        return;
-                    }
-                    if (oracleBtn.isFocused()) {
-                        setValue(AppEnum.TypeEnum.ORACLE);
-                        return;
-                    }
-                    if (pgBtn.isFocused()) {
-                        setValue(AppEnum.TypeEnum.PG);
-                    }
-                });
-    }
-
-    private void initSelectClick() {
-        JavaFxObservable.eventsOf(mysqlBtn, MouseEvent.MOUSE_CLICKED).subscribe(event -> setValue(AppEnum.TypeEnum.MYSQL));
-        JavaFxObservable.eventsOf(oracleBtn, MouseEvent.MOUSE_CLICKED).subscribe(event -> setValue(AppEnum.TypeEnum.ORACLE));
-        JavaFxObservable.eventsOf(pgBtn, MouseEvent.MOUSE_CLICKED).subscribe(event -> setValue(AppEnum.TypeEnum.PG));
-    }
-
-    private void setValue(AppEnum.TypeEnum typeEnum) {
-        Window window = mysqlBtn.getScene().getWindow();
-        window.hide();
-        EventBus.getInstance().post(AppEnum.Events.SELECT_DB_TYPE, typeEnum);
+    public void setProperty(String title, String iconFile, Node node){
+        this.content.getChildren().add(node);
+        this.title.setText(title);
+        this.icon.setImage(new Image(iconFile));
     }
 
     private void initCloseBtn() {
@@ -164,6 +126,7 @@ public class SelectDbTypeView extends AbstractFxmlView implements Initializable 
             window.setX(event.getScreenX() - xOffset);
             window.setY(event.getScreenY() - yOffset);
         });
+
         JavaFxObservable.eventsOf(windowTitle, MouseEvent.MOUSE_PRESSED).subscribe(event -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
