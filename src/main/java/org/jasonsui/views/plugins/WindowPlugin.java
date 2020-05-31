@@ -26,26 +26,19 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 public class WindowPlugin implements Initializable {
+    private static double xOffset = 0;
+    private static double yOffset = 0;
     public AnchorPane dialog;
     @FXML
     private AnchorPane windowTitle;
-
     @FXML
     private ImageView icon;
-
     @FXML
     private Text title;
-
     @FXML
     private MaterialDesignIconView closeBtn;
-
     @FXML
     private AnchorPane content;
-
-    private static double xOffset = 0;
-
-    private static double yOffset = 0;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,28 +58,28 @@ public class WindowPlugin implements Initializable {
                         new KeyValue(shadow.spreadProperty(), shadow.getSpread()),
                         new KeyValue(shadow.offsetXProperty(), shadow.getOffsetX()),
                         new KeyValue(shadow.offsetYProperty(), shadow.getOffsetY()),
-                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(),rand.nextFloat(),rand.nextFloat()))
+                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()))
                 ),
                 new KeyFrame(Duration.millis(1500),
                         new KeyValue(shadow.widthProperty(), 35),
                         new KeyValue(shadow.heightProperty(), 35),
                         new KeyValue(shadow.radiusProperty(), 10),
                         new KeyValue(shadow.spreadProperty(), 0.38),
-                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(),rand.nextFloat(),rand.nextFloat()))
+                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()))
                 ),
                 new KeyFrame(Duration.ZERO,
                         new KeyValue(shadow.radiusProperty(), shadow.getRadius()),
                         new KeyValue(shadow.spreadProperty(), shadow.getSpread()),
                         new KeyValue(shadow.offsetXProperty(), shadow.getOffsetX()),
                         new KeyValue(shadow.offsetYProperty(), shadow.getOffsetY()),
-                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(),rand.nextFloat(),rand.nextFloat()))
+                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()))
                 ),
                 new KeyFrame(Duration.millis(1500),
                         new KeyValue(shadow.widthProperty(), 35),
                         new KeyValue(shadow.heightProperty(), 35),
                         new KeyValue(shadow.radiusProperty(), 10),
                         new KeyValue(shadow.spreadProperty(), 0.38),
-                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(),rand.nextFloat(),rand.nextFloat()))
+                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()))
                 )
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -94,7 +87,7 @@ public class WindowPlugin implements Initializable {
         timeline.play();
     }
 
-    public void setProperty(String title, String iconFile, Node node){
+    public void setProperty(String title, String iconFile, Node node) {
         this.content.getChildren().add(node);
         this.title.setText(title);
         this.icon.setImage(new Image(iconFile));

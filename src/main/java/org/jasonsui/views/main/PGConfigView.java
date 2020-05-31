@@ -33,41 +33,29 @@ import static org.jasonsui.commons.FxmlConstants.PG_CONFIG;
 @Slf4j
 @FXMLView(value = PG_CONFIG)
 public class PGConfigView extends AbstractFxmlView implements Initializable {
+    private final MySqlDBConfigModal dbConfigModal = new MySqlDBConfigModal(AppEnum.TypeEnum.PG);
+    private final DBFactory dbFactory;
+    private final SqliteService sqliteService;
     @FXML
     private TextField nameTextF;
-
     @FXML
     private TextField hostTextF;
-
     @FXML
     private TextField portTextF;
-
     @FXML
     private TextField userTextF;
-
     @FXML
     private PasswordField passwordTextF;
-
     @FXML
     private TextField databaseTextF;
-
     @FXML
     private TextField urlTextF;
-
-    private final MySqlDBConfigModal dbConfigModal = new MySqlDBConfigModal(AppEnum.TypeEnum.PG);
-
     @FXML
     private JFXButton testBtn;
-
     @FXML
     private JFXButton confirmBtn;
-
     @FXML
     private AnchorPane root;
-
-    private final DBFactory dbFactory;
-
-    private final SqliteService sqliteService;
 
     public PGConfigView(DBFactory dbFactory, SqliteService sqliteService) {
         this.dbFactory = dbFactory;

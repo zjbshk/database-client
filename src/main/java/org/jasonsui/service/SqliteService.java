@@ -11,12 +11,12 @@ import java.util.List;
  */
 public interface SqliteService {
 
-  void save(String dbModal);
+    void save(String dbModal);
 
-  String selectById(Integer id);
+    String selectById(Integer id);
 
-  List<LiteConfigModal> selectALl();
+    List<LiteConfigModal> selectALl();
 
-  boolean delete(Integer id);
+    boolean delete(Integer id);
 
 }

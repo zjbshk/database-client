@@ -59,6 +59,14 @@ import static org.jasonsui.commons.FxmlConstants.MAIN;
 @RequiredArgsConstructor
 @FXMLView(value = MAIN, bundle = "il8n.messages", stageStyle = "TRANSPARENT")
 public class MainView extends AbstractFxmlView implements Initializable {
+    private static double xOffset = 0;
+    private static double yOffset = 0;
+    private final HostServices hostServices;
+    private final AppConf.AppInfo appInfo;
+    private final SelectDbTypeView selectDbTypeView;
+    private final MysqlConfigView mysqlConfigView;
+    private final PGConfigView pgConfigView;
+    private final SqliteService sqliteService;
     @FXML
     public AnchorPane mainPane;
     public TableColumn<DBConfigModal, StringProperty> columnName;
@@ -79,30 +87,13 @@ public class MainView extends AbstractFxmlView implements Initializable {
     private ImageView jianshuBtn;
     @FXML
     private JFXButton addConnectionBtn;
-
     @FXML
     private AnchorPane leftPane;
-
-    private final HostServices hostServices;
-
-    private final AppConf.AppInfo appInfo;
-
-    private final SelectDbTypeView selectDbTypeView;
-
-    private final MysqlConfigView mysqlConfigView;
-
-    private final PGConfigView pgConfigView;
-
-    private static double xOffset = 0;
-    private static double yOffset = 0;
     private Stage selectDbTypeDialog;
-
-    private final SqliteService sqliteService;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        leftPane.setBackground(new Background(new BackgroundImage(new Image("images/screen.png",32,32,false,true),
+        leftPane.setBackground(new Background(new BackgroundImage(new Image("images/screen.png", 32, 32, false, true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT)));
         initCloseBtn();
@@ -116,14 +107,14 @@ public class MainView extends AbstractFxmlView implements Initializable {
         initMainPaneKeyPressed();
         initLoadTable();
         initConnectionTableContextMenu();
-        EventBus.getInstance().register(AppEnum.Events.RELOAD_DB_CONFIG, e->{
+        EventBus.getInstance().register(AppEnum.Events.RELOAD_DB_CONFIG, e -> {
             initLoadTable();
         });
     }
 
     private void initConnectionTableContextMenu() {
         JavaFxObservable.eventsOf(connectionTable, ContextMenuEvent.CONTEXT_MENU_REQUESTED).subscribe(contextMenuEvent -> {
-            log.info("MainView_initConnectionTableContextMenu_contextMenuEvent={}",contextMenuEvent);
+            log.info("MainView_initConnectionTableContextMenu_contextMenuEvent={}", contextMenuEvent);
             ContextMenu contextMenu = new ContextMenu();
             FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.EDIT);
             editIcon.setStyle("-fx-text-fill: #fff;-fx-fill: #fff");
@@ -141,8 +132,8 @@ public class MainView extends AbstractFxmlView implements Initializable {
             renameMenu.setOnAction(event -> {
 
             });
-            contextMenu.getItems().addAll(openMenu,renameMenu);
-            ((TableView)contextMenuEvent.getSource()).setContextMenu(contextMenu);
+            contextMenu.getItems().addAll(openMenu, renameMenu);
+            ((TableView) contextMenuEvent.getSource()).setContextMenu(contextMenu);
         });
     }
 
@@ -153,7 +144,7 @@ public class MainView extends AbstractFxmlView implements Initializable {
         columnType.setCellValueFactory(param -> {
             DBConfigModal value = param.getValue();
             String imageUrl = "";
-            switch (value.getTypeEnum()){
+            switch (value.getTypeEnum()) {
                 case MYSQL:
                     imageUrl = ImagesConstants.MYSQL;
                     break;
@@ -170,7 +161,7 @@ public class MainView extends AbstractFxmlView implements Initializable {
             return new SimpleObjectProperty<ImageView>(imageView);
         });
         List<LiteConfigModal> liteConfigModals = sqliteService.selectALl();
-        if (CollectionUtil.isNotEmpty(liteConfigModals)){
+        if (CollectionUtil.isNotEmpty(liteConfigModals)) {
             List<DBConfigModal> dbConfigModals = liteConfigModals.stream().map(x -> JSONObject.parseObject(x.getDbmodal(),
                     DBConfigModal.class)).collect(Collectors.toList());
             log.error("MainView_initLoadTable_dbConfigModals={}", JSON.toJSONString(dbConfigModals));
@@ -201,7 +192,7 @@ public class MainView extends AbstractFxmlView implements Initializable {
                     codeProWindow.show();
                     break;
                 case ORACLE:
-                    codeProWindow =new CodeProWindow(mainPane, "新建Oracle连接", "images/db/oracle.png",
+                    codeProWindow = new CodeProWindow(mainPane, "新建Oracle连接", "images/db/oracle.png",
                             mysqlConfigView.getView());
                     codeProWindow.show();
                     break;

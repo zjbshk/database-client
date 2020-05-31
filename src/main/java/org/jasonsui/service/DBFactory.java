@@ -30,8 +30,8 @@ public class DBFactory {
                 Service annotation = x.getClass().getAnnotation(Service.class);
                 return annotation.value().equals(dbConfigModal.getTypeEnum().getCode());
             }).findFirst();
-            if(!dbConfigModalDbService.isPresent()){
-                log.error("DBFactory_getConn_dbConfigModal.getTypeEnum()={} 数据库相关接口好没有实现",dbConfigModal.getTypeEnum());
+            if (!dbConfigModalDbService.isPresent()) {
+                log.error("DBFactory_getConn_dbConfigModal.getTypeEnum()={} 数据库相关接口好没有实现", dbConfigModal.getTypeEnum());
                 throw new NoSuchElementException();
             }
             dbConfigModalDbService.ifPresent(configModalDbService -> serviceMap.put(dbConfigModal.getTypeEnum(), configModalDbService));

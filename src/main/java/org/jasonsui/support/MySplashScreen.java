@@ -8,6 +8,7 @@ import javafx.scene.layout.VBox;
 
 public class MySplashScreen extends SplashScreen {
 
+    @Override
     public Parent getParent() {
         final ImageView imageView = new ImageView(MySplashScreen.class.getResource("/images/screen.png").toExternalForm());
         final JFXProgressBar splashProgressBar = new JFXProgressBar();

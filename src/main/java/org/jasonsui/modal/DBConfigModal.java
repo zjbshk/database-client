@@ -11,13 +11,6 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class DBConfigModal {
 
-    public DBConfigModal(AppEnum.TypeEnum typeEnum) {
-        this.typeEnum = typeEnum;
-    }
-
-    public DBConfigModal() {
-    }
-
     @NotEmpty(message = "name is not empty", groups = Group.Name.class)
     private String name;
     @NotEmpty(message = "host is not empty", groups = Group.Host.class)
@@ -33,4 +26,9 @@ public class DBConfigModal {
     @NotEmpty(message = "url is not empty", groups = Group.Url.class)
     private String url;
     private AppEnum.TypeEnum typeEnum;
+    public DBConfigModal(AppEnum.TypeEnum typeEnum) {
+        this.typeEnum = typeEnum;
+    }
+    public DBConfigModal() {
+    }
 }

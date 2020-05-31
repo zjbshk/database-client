@@ -37,27 +37,20 @@ import static org.jasonsui.commons.FxmlConstants.SELECT_DB_TYPE;
 public class SelectDbTypeView extends AbstractFxmlView implements Initializable {
 
 
+    private static double xOffset = 0;
+    private static double yOffset = 0;
     @FXML
     private AnchorPane dialog;
-
     @FXML
     private HBox windowTitle;
-
     @FXML
     private MaterialDesignIconView closeBtn;
-
     @FXML
     private JFXButton mysqlBtn;
-
     @FXML
     private JFXButton pgBtn;
-
     @FXML
     private JFXButton oracleBtn;
-
-    private static double xOffset = 0;
-
-    private static double yOffset = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -79,28 +72,28 @@ public class SelectDbTypeView extends AbstractFxmlView implements Initializable 
                         new KeyValue(shadow.spreadProperty(), shadow.getSpread()),
                         new KeyValue(shadow.offsetXProperty(), shadow.getOffsetX()),
                         new KeyValue(shadow.offsetYProperty(), shadow.getOffsetY()),
-                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(),rand.nextFloat(),rand.nextFloat()))
+                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()))
                 ),
                 new KeyFrame(Duration.millis(1500),
                         new KeyValue(shadow.widthProperty(), 35),
                         new KeyValue(shadow.heightProperty(), 35),
                         new KeyValue(shadow.radiusProperty(), 10),
                         new KeyValue(shadow.spreadProperty(), 0.38),
-                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(),rand.nextFloat(),rand.nextFloat()))
+                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()))
                 ),
                 new KeyFrame(Duration.ZERO,
                         new KeyValue(shadow.radiusProperty(), shadow.getRadius()),
                         new KeyValue(shadow.spreadProperty(), shadow.getSpread()),
                         new KeyValue(shadow.offsetXProperty(), shadow.getOffsetX()),
                         new KeyValue(shadow.offsetYProperty(), shadow.getOffsetY()),
-                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(),rand.nextFloat(),rand.nextFloat()))
+                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()))
                 ),
                 new KeyFrame(Duration.millis(1500),
                         new KeyValue(shadow.widthProperty(), 35),
                         new KeyValue(shadow.heightProperty(), 35),
                         new KeyValue(shadow.radiusProperty(), 10),
                         new KeyValue(shadow.spreadProperty(), 0.38),
-                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(),rand.nextFloat(),rand.nextFloat()))
+                        new KeyValue(shadow.colorProperty(), Color.color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()))
                 )
         );
         timeline.setCycleCount(Timeline.INDEFINITE);

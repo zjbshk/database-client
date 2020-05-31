@@ -33,41 +33,29 @@ import static org.jasonsui.commons.FxmlConstants.MYSQL_CONFIG;
 @Slf4j
 @FXMLView(value = MYSQL_CONFIG)
 public class MysqlConfigView extends AbstractFxmlView implements Initializable {
+    private final MySqlDBConfigModal dbConfigModal = new MySqlDBConfigModal(AppEnum.TypeEnum.MYSQL);
+    private final DBFactory dbFactory;
+    private final SqliteService sqliteService;
     @FXML
     private TextField nameTextF;
-
     @FXML
     private TextField hostTextF;
-
     @FXML
     private TextField portTextF;
-
     @FXML
     private TextField userTextF;
-
     @FXML
     private PasswordField passwordTextF;
-
     @FXML
     private TextField databaseTextF;
-
     @FXML
     private TextField urlTextF;
-
-    private final MySqlDBConfigModal dbConfigModal = new MySqlDBConfigModal(AppEnum.TypeEnum.MYSQL);
-
     @FXML
     private JFXButton testBtn;
-
     @FXML
     private JFXButton confirmBtn;
-
     @FXML
     private AnchorPane root;
-
-    private final DBFactory dbFactory;
-
-    private final SqliteService sqliteService;
 
     public MysqlConfigView(DBFactory dbFactory, SqliteService sqliteService) {
         this.dbFactory = dbFactory;

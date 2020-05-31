@@ -12,8 +12,8 @@ import java.util.List;
 public interface ServiceHelper {
     default String getDBFile() {
         String homePath = System.getProperty("user.home");
-        String path =  homePath + File.separator + "codeGenerated" + File.separator + "c-g-pro.db";
-        if(!FileUtil.exist(path)){
+        String path = homePath + File.separator + "codeGenerated" + File.separator + "c-g-pro.db";
+        if (!FileUtil.exist(path)) {
             FileUtil.writeBytes(new byte[]{}, path);
         }
         return path;
@@ -21,7 +21,7 @@ public interface ServiceHelper {
 
 
     default SimpleDataSource createDS() {
-        return new SimpleDataSource("jdbc:sqlite://" + getDBFile(),"admin","admin", "org.sqlite.JDBC");
+        return new SimpleDataSource("jdbc:sqlite://" + getDBFile(), "admin", "admin", "org.sqlite.JDBC");
     }
 
 
@@ -29,7 +29,7 @@ public interface ServiceHelper {
         try {
             List<Entity> query = db.query("SELECT count(*) FROM sqlite_master WHERE type='table' AND name=?", tableName);
             Integer count = query.get(0).getInt("count(*)");
-            return count>0;
+            return count > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }

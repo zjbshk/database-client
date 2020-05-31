@@ -11,7 +11,7 @@ public class AppConf {
     @Data
     @Component
     @ConfigurationProperties(prefix = "app")
-    public static class AppInfo{
+    public static class AppInfo {
         private Recommend recommend;
     }
 
